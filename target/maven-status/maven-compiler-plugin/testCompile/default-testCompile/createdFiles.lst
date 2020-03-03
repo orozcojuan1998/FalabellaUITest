@@ -1,0 +1,13 @@
+runner\Runner.class
+pages\BasePage.class
+steps\LoginSteps.class
+pages\ShoppingCartSummaryPage.class
+pages\HomePage.class
+helpers\PageGenerator.class
+pages\SearchResultsPage.class
+pages\ProductOverviewPage.class
+webdrivermanager\Hook.class
+steps\ProductToTheShoppingCartSteps.class
+entities\User.class
+helpers\StaticWait.class
+pages\HomeFalabella.class
