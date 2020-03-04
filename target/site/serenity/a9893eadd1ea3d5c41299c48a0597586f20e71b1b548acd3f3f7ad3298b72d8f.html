@@ -103,7 +103,7 @@
             $("#requirements-tabs").tabs();
             $("#test-tabs").tabs();
 
-            var requirementsTree = [{"text":"Filter","type":"feature","href":"a9893eadd1ea3d5c41299c48a0597586f20e71b1b548acd3f3f7ad3298b72d8f.html","nodes":[],"selectable":false,"tags":["",""]}];
+            var requirementsTree = [{"text":"Filter","type":"feature","href":"a9893eadd1ea3d5c41299c48a0597586f20e71b1b548acd3f3f7ad3298b72d8f.html","nodes":[],"selectable":false,"tags":["","\u003cspan class\u003d\u0027feature-count\u0027\u003e1 scenario\u003c/span\u003e"]}];
 
             $('#tree').treeview({
                 data: requirementsTree,
@@ -148,6 +148,7 @@
             <span class="breadcrumbs">
             <a href='index.html'>Home</a> > <a href="capabilities.html">Requirements</a>
 
+                > <a href="442123a3479a5396d46abce599831752e7e5ad79bce934c9bf2a527938a535de.html">Filters</a>
 
 
                 > <span class="truncate-40">Filter</span>
@@ -175,7 +176,7 @@
             <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="fa fa-comments-o"></i> Capabilities</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated </span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 04-03-2020 14:55</span>
     <br style="clear:left"/>
 </div>
 
@@ -198,7 +199,7 @@
                                 </div>
                             </div>
                             <div class="requirementNarrativeTitle">
-                                Filter
+                                
                             </div>
 
                         </div>
@@ -231,11 +232,65 @@
 
                                             <div id="toc">
                                                 <table class="table" id="toc-table">
+                                                        <tr>
+                                                            <td style="width:95%;" class="toc-title">
+                                                                <a href="#a1d942c5c7d573494530ca6af7a68eef58667bffe3539539fd825610e23946ea" title="View scenario details" >Test filter price</a>
+
+
+                                                            </td>
+                                                            <td style="width:5%;">
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="2c8e25d4a93da5bd4ba7e27db530ddaa3ff7e12277f859ae0dcffaa427ca65c7.html"
+                                                                               title="View test results">
+                                                                            <i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i>
+                                                                            </a>
+
+                                                                        
+                                                                        </td>
+                                                                        <td>
+                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                               href="2c8e25d4a93da5bd4ba7e27db530ddaa3ff7e12277f859ae0dcffaa427ca65c7.html"
+                                                                               title="View test results">
+                                                                                <i class="fas fa-search-plus"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
                                                 </table>
 
                                             </div>
 
                                             <h3>Scenario details</h3>
+
+
+                                                <div class="scenario-docs card" id="a1d942c5c7d573494530ca6af7a68eef58667bffe3539539fd825610e23946ea">
+                                                    <div class="scenario-docs card-header success" style="min-height:1.5em;">
+                                                        <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="2c8e25d4a93da5bd4ba7e27db530ddaa3ff7e12277f859ae0dcffaa427ca65c7.html" title="View test results">Test filter price</a>
+                                                            </span>
+                                                            <span class="scenario-result-icon">
+                                                                
+
+                                                                    <i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="scenario-docs card-body">
+                                                            <p>Given The guest user is in the Falabella homepage</p>
+                                                            <p>And The guest type &quot;Stan smith&quot; in the search bar</p>
+                                                            <p>When The guest apply the price for filter between &quot;290000&quot; and &quot;350000&quot;</p>
+                                                            <p>Then The guest should just see products in the given range</p>
+                                                        <div class="examples">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +299,41 @@
                             <div id="results" class="tab-pane fade">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-4">
+
+                                            <div style="width:300px;" class="chart-container automated-and-manual-results">
+                                                <div class="ct-chart ct-square"></div>
+                                            </div>
+                                            <script>
+
+                                                var labels = ['100%', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+                                                // Our series array that contains series objects or in this case series data arrays
+
+                                                var series = [{meta: 'Passing tests (automated)', value: 1}, {meta: 'Passing tests (manual)', value: 0}, {meta: 'Pending tests (automated)', value: 0}, {meta: 'Pending tests (manual)', value: 0}, {meta: 'Ignored tests (automated)', value: 0}, {meta: 'Ignored tests (manual)', value: 0}, {meta: 'Skipped tests (automated)', value: 0}, {meta: 'Skipped tests (manual)', value: 0}, {meta: 'Failing tests (automated)', value: 0}, {meta: 'Failing tests (manual)', value: 0}, {meta: 'Broken tests (automated)', value: 0}, {meta: 'Broken tests (manual)', value: 0}, {meta: 'Compromised tests (automated)', value: 0}, {meta: 'Compromised tests (manual)', value: 0}];
+
+                                                // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
+                                                // as you saw in the previous example
+                                                var options = {
+                                                    width: 350,
+                                                    height: 300
+                                                };
+
+                                                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                                                    new Chartist.Pie('.ct-chart', {
+                                                        series: series,
+                                                        labels: labels,
+                                                    }, {
+                                                        donut: true,
+                                                        donutWidth: 60,
+                                                        donutSolid: true,
+                                                        startAngle: 270,
+                                                        showLabel: true
+                                                    }, options);
+                                                });
+
+                                            </script>
+                                        </div>
+                                        <div class="col-sm-8">
 
                                         <table class="table">
                                             <thead>
@@ -257,11 +346,12 @@
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                                    <td class="aggregate-result-count"><i
-                                                                            class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing
+                                                                    <td class="aggregate-result-count">
+                                                                        <a href="7dadbcd79c4e01545dcfd29bf44498ae4c58af4372115fa6ac378c38fc3f7ae1.html"><i
+                                                                                class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing</a>
                                                                     </td>
-                                                <td class="automated-stats">0</td>
-                                                <td class="automated-stats"> </td>
+                                                <td class="automated-stats">1</td>
+                                                <td class="automated-stats">100%</td>
                                             </tr>
                                             <tr>
                                                                     <td class="aggregate-result-count"><i
@@ -315,7 +405,7 @@
                                             </tr>
                                             <tr class="summary-stats">
                                                 <td class="aggregate-result-count">Total</td>
-                                                <td class="automated-stats">0</td>
+                                                <td class="automated-stats">1</td>
                                                 <td class="automated-stats"></td>
                                             </tr>
                                             </tbody>
@@ -337,11 +427,11 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <td>0ms</td>
-                                                        <td>0ms</td>
-                                                        <td>0ms</td>
-                                                        <td>0ms</td>
-                                                        <td>0ms</td>
+                                                        <td> 1m 20s</td>
+                                                        <td>80ms</td>
+                                                        <td> 1m 20s</td>
+                                                        <td> 1m 20s</td>
+                                                        <td> 1m 20s</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -353,7 +443,31 @@
                                             <div class="col-sm-12">
                                                 <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
 
-                                            No automated tests were executed
+                                            <table class="scenario-result-table table" id="scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th class="test-name-column">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Start Time</th>
+                                                    <th>Duration</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="scenario-result SUCCESS">
+                                                    <td>
+                                                            <a href="2c8e25d4a93da5bd4ba7e27db530ddaa3ff7e12277f859ae0dcffaa427ca65c7.html">Test filter price</a>
+                                                    </td>
+                                                    <td>4</td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td>
+                                                            <i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i> <span
+                                                                style="display:none">SUCCESS</span>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
 
                                             </div>
                                         </div>

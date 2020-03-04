@@ -1,4 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Login","Test succesful login","SUCCESS","2020-03-03T20:21:13.218-05:00[America/Bogota]","0.0","28.32"
-"Login","Test unsuccesful login password","SUCCESS","2020-03-03T20:21:41.543-05:00[America/Bogota]","0.0","47.33"
-"Login","Test unsuccesful login email","SUCCESS","2020-03-03T20:22:28.883-05:00[America/Bogota]","0.0","33.22"

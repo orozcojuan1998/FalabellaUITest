@@ -1,8 +1,15 @@
 package pages;
 
+import entities.User;
+import helpers.StaticWait;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterPage extends BasePage{
 
@@ -30,7 +37,7 @@ public class RegisterPage extends BasePage{
     @FindBy(id = "cedula")
     private WebElement documentType;
 
-    @FindBy(id = "cedula_colombiana")
+    @FindBy(id = "cedula_colombia")
     private WebElement documentNumber;
 
     @FindBy(xpath = "//input[@value='male']")
@@ -57,11 +64,66 @@ public class RegisterPage extends BasePage{
     @FindBy(id = "boton_Ar")
     private WebElement buttonRegister;
 
+    @FindBy(id = "mensajeCelVacio")
+    private WebElement messageCellphone;
+
     public RegisterPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }
 
+    public void enterData(User user) {
+        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("7"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("user")));
+        click(name);
+        clear(name);
+        writeText(name,user.getName());
+        click(fatherLastname);
+        clear(fatherLastname);
+        writeText(fatherLastname,user.getFatherLastName());
+        click(motherLastName);
+        clear(motherLastName);
+        writeText(motherLastName,user.getMotherLastName());
+        click(email);
+        clear(email);
+        writeText(email,user.getEmail());
+        click(passwordOne);
+        clear(passwordOne);
+        writeText(passwordOne,user.getPassword());
+        click(passwordTwo);
+        clear(passwordTwo);
+        writeText(passwordTwo,user.getPassword());
+        Select dropCountry = new Select(country);
+        dropCountry.selectByVisibleText(user.getCountry());
+        Select dropDocument = new Select(documentType);
+        dropDocument.selectByValue(user.getDocType());
+        click(documentNumber);
+        clear(documentNumber);
+        writeText(documentNumber,String.valueOf(user.getNumDocument()));
+        click(genderFemale);
+        Select dropDay = new Select(day);
+        dropDay.selectByValue(String.valueOf(user.getDay()));
+        Select dropMonth = new Select(month);
+        dropMonth.selectByValue(String.valueOf(user.getMonth()));
+        Select dropYear = new Select(year);
+        dropYear.selectByValue(String.valueOf(user.getYear()));
+        if(!checkTerms.isSelected()){
+            checkTerms.sendKeys(Keys.SPACE);
+        }
+
+
+    }
+
+    public WebElement getButtonRegister() {
+        return buttonRegister;
+    }
+
+    public String getRegisterMessageError() {
+        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("7"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("mensajeCelVacio")));
+        String message = messageCellphone.getText();
+        return message;
+    }
 
     //https://stackoverflow.com/questions/20138761/how-to-select-a-dropdown-value-in-selenium-webdriver-using-java
 

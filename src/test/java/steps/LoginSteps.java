@@ -30,9 +30,9 @@ public class LoginSteps {
     @Before
     public void setupClass() {
         driver = new ChromeDriver();
-        homeFalabella = new HomeFalabella(driver);
-        driver.manage().window().maximize();
         driver.get("https://www.falabella.com.co/falabella-co/#");
+        driver.manage().window().maximize();
+        homeFalabella = new HomeFalabella(driver);
     }
 
     @Given("^The user is in the Falabella homepage$")

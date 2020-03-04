@@ -2,6 +2,7 @@ package pages;
 
 import helpers.StaticWait;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -26,6 +27,12 @@ public class HomeFalabella extends BasePage{
     @FindBy (xpath = "//button/p[text() = 'Iniciar sesión']")
     private WebElement loginButton;
 
+    @FindBy (xpath = "//a[@href='/falabella-co/myaccount/register.jsp']")
+    private WebElement registerLink;
+
+    @FindBy (id = "searchQuestionSolr")
+    private WebElement searchBar;
+
     public HomeFalabella(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -48,6 +55,10 @@ public class HomeFalabella extends BasePage{
         return inputPassword;
     }
 
+    public void getRegisterLink() {
+        click(this.registerLink);
+    }
+
     public void sendCredentials (String user, String password){
         click(this.inputEmail);
         clear(this.inputEmail);
@@ -60,15 +71,15 @@ public class HomeFalabella extends BasePage{
 
     public void login (){
         click(this.loginButton);
-        WebDriverWait waitDoggy = new WebDriverWait(driver,Long.parseLong("5"));
-        waitDoggy.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(" //div[@class='fb-masthead-login__name re-design-cl__name']")));
+        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(" //div[@class='fb-masthead-login__name re-design-cl__name']")));
 
     }
 
     public void loginInvalid (){
         click(this.loginButton);
-        WebDriverWait waitDoggy = new WebDriverWait(driver,Long.parseLong("5"));
-        waitDoggy.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class ='Login__errorBlock__3q25u']")));
+        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class ='Login__errorBlock__3q25u']")));
 
     }
 
@@ -94,11 +105,25 @@ public class HomeFalabella extends BasePage{
         WebElement logOut = driver.findElement(By.xpath("//li/a[@class='fb-filter-header__log-out']"));
         waitVisibility(logOut);
         logOut.click();
-        StaticWait.WaitForSeconds(10);
+
     }
 
     public boolean getLogOutMessage() {
+        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name login-redesing_logout-box']")));
         WebElement logUpdate = driver.findElement(By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name login-redesing_logout-box']"));
         return logUpdate.getText().toLowerCase().contains("inicia sesión");
+    }
+
+    public ProductsPage searchProduct(String query) {
+        //WebElement alert = driver.findElement(By.id("acc-alert-deny"));
+        //click(alert);
+        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("searchQuestionSolr")));
+        click(searchBar);
+        clear(searchBar);
+        writeText(searchBar,query);
+        searchBar.sendKeys(Keys.ENTER);
+        return new ProductsPage(driver);
     }
 }
