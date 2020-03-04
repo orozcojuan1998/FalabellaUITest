@@ -6,8 +6,8 @@ Feature: Login
     Given The user is in the Falabella homepage
     And The user clicks the login button
     When The user enters its data
-    | email                    | password |
-    | testjuanorozco3@gmail.com | test1234 |
+    | email                     | password |
+    | testjuanorozco5@gmail.com | test1234 |
     And Clicks the Iniciar sesion button
     Then The user is signed in
 
@@ -17,8 +17,8 @@ Feature: Login
     And The user clicks the login button
     When The user enters its data
       | email                     | password   |
-      | testjuanorozco3@gmail.com | test12345  |
-    And Clicks the Iniciar sesion button
+      | testjuanorozco4@gmail.com | test12345  |
+    And Clicks on the Iniciar sesion button
     Then The user stays in the same page and is informed that credentials are wrong
 
   Scenario: Test unsuccesful login email
@@ -27,7 +27,8 @@ Feature: Login
     When The user enters its data
       | email                        | password   |
       | testjuanorozco7895@gmail.com | test1234 |
-    And Clicks the Iniciar sesion button
+    And Clicks on the Iniciar sesion button
     Then The user stays in the same page and is informed that credentials are wrong
+
 
 

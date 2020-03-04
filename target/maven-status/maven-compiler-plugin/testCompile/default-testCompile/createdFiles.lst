@@ -1,6 +1,7 @@
 runner\Runner.class
 pages\BasePage.class
 steps\LoginSteps.class
+builders\UserBuilder.class
 pages\ShoppingCartSummaryPage.class
 pages\HomePage.class
 helpers\PageGenerator.class

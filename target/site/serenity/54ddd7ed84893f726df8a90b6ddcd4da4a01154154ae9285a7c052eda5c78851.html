@@ -103,7 +103,7 @@
             $("#requirements-tabs").tabs();
             $("#test-tabs").tabs();
 
-            var requirementsTree = [{"text":"Register","type":"feature","href":"51e921b017b7d9aa353d74706b6ad13012cec9642c81ab22fecd875b66c67556.html","nodes":[],"selectable":false,"tags":["",""]}];
+            var requirementsTree = [{"text":"Logout","type":"feature","href":"54ddd7ed84893f726df8a90b6ddcd4da4a01154154ae9285a7c052eda5c78851.html","nodes":[],"selectable":false,"tags":["",""]}];
 
             $('#tree').treeview({
                 data: requirementsTree,
@@ -150,7 +150,7 @@
 
 
 
-                > <span class="truncate-40">Register</span>
+                > <span class="truncate-40">Logout</span>
 
             </span>
         </div>
@@ -191,14 +191,15 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                     <span>
-                                            <h2><i class="fa fa-book"></i> Feature:  Register</h2>
+                                            <h2><i class="fa fa-book"></i> Feature:  Logout</h2>
                                         </span>
                                 </div>
                                 </div>
                                 </div>
                             </div>
                             <div class="requirementNarrativeTitle">
-                                Register
+                                As a user i want to logout<br />
+from the web page
                             </div>
 
                         </div>
@@ -231,11 +232,110 @@
 
                                             <div id="toc">
                                                 <table class="table" id="toc-table">
+                                                        <tr>
+                                                            <td style="width:95%;" class="toc-title">
+                                                                <a href="#9d6322c1f4d9d3f38aed8bfbe0b2bcadf66ad82c008476fa62541fa069138e94" title="View scenario details" >Login</a>
+
+
+                                                            </td>
+                                                            <td style="width:5%;">
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            
+                                                                            
+
+                                                                        
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:95%;" class="toc-title">
+                                                                <a href="#35aafc435b397baf46d57530f80719a447a0dcdf1c44cd1899320a814f45a521" title="View scenario details" >Test successful log out</a>
+
+
+                                                            </td>
+                                                            <td style="width:5%;">
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            
+                                                                            
+
+                                                                        
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
                                                 </table>
 
                                             </div>
 
                                             <h3>Scenario details</h3>
+
+
+                                                <div class="scenario-docs card" id="9d6322c1f4d9d3f38aed8bfbe0b2bcadf66ad82c008476fa62541fa069138e94">
+                                                    <div class="scenario-docs card-header undefined" style="min-height:1.5em;">
+                                                        <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="" title="View test results">Background: Login</a>
+                                                            </span>
+                                                            <span class="scenario-result-icon">
+                                                                
+
+                                                                    <i class="fas fa-pause"
+                                                                       title="No test has been implemented yet"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="scenario-docs card-body">
+                                                            <p>Given The user is in the Falabella homepage</p>
+                                                            <p>And The user clicks the login button</p>
+                                                            <p><p>When The user enters its data</p>
+<table>
+<thead>
+<tr><th>email</th><th>password</th></tr>
+</thead>
+<tbody>
+<tr><td>testjuanorozco3@gmail.com</td><td>test1234</td></tr>
+</tbody>
+</table>
+</p>
+                                                            <p>And Clicks the Iniciar sesion button</p>
+                                                            <p>Then The user is signed in</p>
+                                                        <div class="examples">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="scenario-docs card" id="35aafc435b397baf46d57530f80719a447a0dcdf1c44cd1899320a814f45a521">
+                                                    <div class="scenario-docs card-header undefined" style="min-height:1.5em;">
+                                                        <div>
+                                                            <span class="scenario-heading">
+                                                                <a href="" title="View test results">Test successful log out</a>
+                                                            </span>
+                                                            <span class="scenario-result-icon">
+                                                                
+
+                                                                    <i class="fas fa-pause"
+                                                                       title="No test has been implemented yet"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="scenario-docs card-body">
+                                                            <p>Given The user is wants to log out</p>
+                                                            <p>When The user hover on the account button and clicks the log out button</p>
+                                                            <p>Then The user is logout from the web page</p>
+                                                        <div class="examples">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -353,7 +453,31 @@
                                             <div class="col-sm-12">
                                                 <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
 
-                                            No automated tests were executed
+                                            <table class="scenario-result-table table" id="scenario-results">
+                                                <thead>
+                                                <tr>
+                                                    <th class="test-name-column">Scenario</th>
+                                                    <th>Steps</th>
+                                                    <th>Start Time</th>
+                                                    <th>Duration</th>
+                                                    <th>Result</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="scenario-result UNDEFINED">
+                                                    <td>
+                                                            Test successful log out
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td>
+                                                            <i class="fas fa-pause"
+                                                               title="No test has been implemented yet"></i>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
 
                                             </div>
                                         </div>
