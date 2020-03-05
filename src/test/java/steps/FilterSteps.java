@@ -1,42 +1,35 @@
 package steps;
 
-import controllers.FilterController;
-import cucumber.api.PendingException;
+
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import helpers.StaticWait;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomeFalabella;
 import pages.ProductsPage;
+import webdrivermanager.DriverFactory;
+import webdrivermanager.DriverManager;
+import webdrivermanager.DriverType;
+import webdrivermanager.Hook;
 
 public class FilterSteps {
 
-    private WebDriver driver;
     private HomeFalabella homeFalabella;
     private ProductsPage productsPage;
     private String fromRange;
     private String toRange;
-    FilterController filterController = new FilterController();
 
-
-    @Before
-    public void setupClass() {
-        driver = new ChromeDriver();
-        driver.get("https://www.falabella.com.co/falabella-co/#");
-        driver.manage().window().maximize();
-    }
 
 
     @Given("^The guest user is in the Falabella homepage$")
     public void theGuestUserIsInTheFalabellaHomepage() {
-        homeFalabella = new HomeFalabella(driver);
+        homeFalabella = new HomeFalabella(Hook.getWebDriver());
     }
 
     @And("^The guest type \"([^\"]*)\" in the search bar$")
@@ -56,13 +49,6 @@ public class FilterSteps {
     public void theGuestShouldJustSeeProductsInTheGivenRange() {
         Boolean response = productsPage.getResults(fromRange,toRange);
         Assert.assertThat("Logout invalido", response, Matchers.equalTo(true));
-    }
-
-    @After
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 
 }

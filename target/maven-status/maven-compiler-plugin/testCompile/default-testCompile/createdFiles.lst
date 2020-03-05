@@ -1,13 +1,13 @@
-controllers\RegisterController.class
 runner\Runner.class
+webdrivermanager\ChromeDriverManager.class
 pages\BasePage.class
+webdrivermanager\DriverType.class
 helpers\PageGenerator.class
 pages\RegisterPage.class
 pages\SearchResultsPage.class
 pages\ProductOverviewPage.class
-controllers\FilterController.class
+webdrivermanager\DriverFactory$1.class
 webdrivermanager\Hook.class
-controllers\LoginController.class
 entities\User.class
 helpers\StaticWait.class
 steps\FilterSteps.class
@@ -15,7 +15,8 @@ steps\LoginSteps.class
 builders\UserBuilder.class
 pages\ProductsPage.class
 pages\ShoppingCartSummaryPage.class
+webdrivermanager\DriverManager.class
 pages\HomePage.class
-steps\ProductToTheShoppingCartSteps.class
+webdrivermanager\DriverFactory.class
 pages\HomeFalabella.class
 steps\RegisterSteps.class

@@ -10,4 +10,7 @@ Feature: Shopping Cart
     Then The user is signed in
 
   Scenario: Test add product to cart
-    Given
+    When The user looks for "crema facial"  in the search bar
+    And The user selects any displayed result to add to the shopping cart
+    And The user adds the product to its shopping cart
+    Then The user should see the product name in the cart

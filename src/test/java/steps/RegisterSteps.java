@@ -14,24 +14,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomeFalabella;
 import pages.RegisterPage;
+import webdrivermanager.DriverFactory;
+import webdrivermanager.DriverManager;
+import webdrivermanager.DriverType;
+import webdrivermanager.Hook;
 
 public class RegisterSteps {
 
     protected WebDriver driver;
     private User user;
-    private HomeFalabella homeFalabella;
-    private RegisterPage registerPage;
-    private UserBuilder userBuilder;
 
-    @Before
-    public void setupClass() {
-        driver = new ChromeDriver();
-        driver.get("https://www.falabella.com.co/falabella-co/#");
-        driver.manage().window().maximize();
-        homeFalabella = new HomeFalabella(driver);
-        registerPage = new RegisterPage(driver);
-    }
-
+    private HomeFalabella homeFalabella = new HomeFalabella(Hook.getWebDriver());
+    private RegisterPage registerPage = new RegisterPage(Hook.getWebDriver());
 
 
     @Given("^The user want to register in the page$")
@@ -41,6 +35,7 @@ public class RegisterSteps {
                     withMotherLastName("Llerena").
                     withEmail("testjuanorozco6@gmail.com").
                     withPassword("test1234").
+                    withGender("M").
                     withCountry("Colombia").
                     withDocumentType("CEDULA_DE_CIUDADANIA").
                     withNumDocument(1032748964).
@@ -81,13 +76,5 @@ public class RegisterSteps {
         Assert.assertEquals("Login invalido", "Debes ingresar un celular", textResponse);
 
     }
-
-    @After
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
 
 }

@@ -15,25 +15,17 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomeFalabella;
+import webdrivermanager.Hook;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
 
 public class LoginSteps {
 
     protected WebDriver driver;
     private User user;
-    private HomeFalabella homeFalabella;
-    private UserBuilder userBuilder;
+    private HomeFalabella homeFalabella = new HomeFalabella(Hook.getWebDriver());
 
-    @Before
-    public void setupClass() {
-        driver = new ChromeDriver();
-        driver.get("https://www.falabella.com.co/falabella-co/#");
-        driver.manage().window().maximize();
-        homeFalabella = new HomeFalabella(driver);
-    }
 
     @Given("^The user is in the Falabella homepage$")
     public void theUserIsInTheFalabellaHomepage() {
@@ -79,10 +71,6 @@ public class LoginSteps {
         Assert.assertEquals("Login invalido", "E-mail o clave incorrecta. Por favor inténtalo nuevamente.", text);
     }
 
-    @Given("^The user is wants to log out$")
-    public void theUserIsWantsToLogOut() {
-        driver.get("https://www.falabella.com.co/falabella-co/#");
-    }
 
     @When("^The user hover on the account button and clicks the log out button$")
     public void theUserHoverOnTheAccountButtonAndClicksTheLogOutButton() {
@@ -96,11 +84,5 @@ public class LoginSteps {
         Assert.assertThat("Logout invalido", logOutResponse, Matchers.equalTo(true));
     }
 
-    @After
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 
 }

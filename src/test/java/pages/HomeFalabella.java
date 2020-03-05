@@ -1,37 +1,47 @@
 package pages;
 
-import helpers.StaticWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
 
-public class HomeFalabella extends BasePage{
+
+public class HomeFalabella extends BasePage {
 
     @FindBy(id = "header-login-modal")
     private WebElement buttonLogin;
 
-    @FindBy (id = "emailAddress")
+    @FindBy(id = "emailAddress")
     private WebElement inputEmail;
 
-    @FindBy (className = "InputPassword__inputText__2IUUv")
+    @FindBy(className = "InputPassword__inputText__2IUUv")
     private WebElement inputPassword;
 
-    @FindBy (xpath = "//button/p[text() = 'Iniciar sesión']")
+    @FindBy(xpath = "//button/p[text() = 'Iniciar sesión']")
     private WebElement loginButton;
 
-    @FindBy (xpath = "//a[@href='/falabella-co/myaccount/register.jsp']")
+    @FindBy(xpath = "//a[@href='/falabella-co/myaccount/register.jsp']")
     private WebElement registerLink;
 
-    @FindBy (id = "searchQuestionSolr")
+    @FindBy(id = "searchQuestionSolr")
     private WebElement searchBar;
+
+    private By loginFrame = By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name']");
+    private By loginError = By.xpath("//div[@class ='Login__errorBlock__3q25u']");
+    private By welcomeMessageText = By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name']");
+    private By errorMessageText = By.xpath("//div[@class='Login__errorBlock__3q25u']");
+    private By subMenuForLogin = By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name']");
+    private By louOutButton = By.xpath("//li/a[@class='fb-filter-header__log-out']");
+    private By logOutBox = By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name login-redesing_logout-box']");
+    private By logOutMessage = By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name login-redesing_logout-box']");
+    private By searchBarQuery = By.id("searchQuestionSolr");
+    private By alertMessage = By.id("acc-alert-deny");
 
     public HomeFalabella(WebDriver driver) {
         super(driver);
@@ -59,7 +69,7 @@ public class HomeFalabella extends BasePage{
         click(this.registerLink);
     }
 
-    public void sendCredentials (String user, String password){
+    public void sendCredentials(String user, String password) {
         click(this.inputEmail);
         clear(this.inputEmail);
         writeText(inputEmail, user);
@@ -69,60 +79,62 @@ public class HomeFalabella extends BasePage{
 
     }
 
-    public void login (){
+    public void login() {
         click(this.loginButton);
-        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("5"));
-        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(" //div[@class='fb-masthead-login__name re-design-cl__name']")));
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(loginFrame));
 
     }
 
-    public void loginInvalid (){
+    public void loginInvalid() {
         click(this.loginButton);
-        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("5"));
-        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class ='Login__errorBlock__3q25u']")));
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("7"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(loginError));
 
     }
 
     public String getLoginText() {
-        WebElement welcomeMessage = driver.findElement(By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name']"));
-        waitVisibility(welcomeMessage);
-        System.out.println(welcomeMessage.getText());
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(welcomeMessageText));
+        WebElement welcomeMessage = driver.findElement(welcomeMessageText);
         return welcomeMessage.getText();
     }
 
     public String getLoginErrorText() {
-        WebElement errorMessage = driver.findElement(By.xpath("//div[@class='Login__errorBlock__3q25u']"));
-        System.out.println(errorMessage.getText());
+        WebElement errorMessage = driver.findElement(errorMessageText);
         return errorMessage.getText();
 
 
     }
 
     public void logOut() {
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("7"));
+        waitItems.until(ExpectedConditions.elementToBeClickable(subMenuForLogin));
         Actions action = new Actions(this.driver);
-        WebElement subMenuLoginOption = driver.findElement(By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name']"));
+        WebElement subMenuLoginOption = driver.findElement(subMenuForLogin);
         action.moveToElement(subMenuLoginOption).perform();
-        WebElement logOut = driver.findElement(By.xpath("//li/a[@class='fb-filter-header__log-out']"));
-        waitVisibility(logOut);
-        logOut.click();
+        WebElement logOut = driver.findElement(louOutButton);
+        click(logOut);
 
     }
 
     public boolean getLogOutMessage() {
-        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("5"));
-        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name login-redesing_logout-box']")));
-        WebElement logUpdate = driver.findElement(By.xpath("//div[@class='fb-masthead-login__name re-design-cl__name login-redesing_logout-box']"));
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(logOutBox));
+        WebElement logUpdate = driver.findElement(logOutMessage);
         return logUpdate.getText().toLowerCase().contains("inicia sesión");
     }
 
     public ProductsPage searchProduct(String query) {
-        //WebElement alert = driver.findElement(By.id("acc-alert-deny"));
-        //click(alert);
-        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("5"));
-        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("searchQuestionSolr")));
+        WebDriverWait waitItemAlert = new WebDriverWait(driver, Long.parseLong("8"));
+        waitItemAlert.until(ExpectedConditions.visibilityOfElementLocated(alertMessage));
+        WebElement alert = driver.findElement(alertMessage);
+        click(alert);
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(searchBarQuery));
         click(searchBar);
         clear(searchBar);
-        writeText(searchBar,query);
+        writeText(searchBar, query);
         searchBar.sendKeys(Keys.ENTER);
         return new ProductsPage(driver);
     }

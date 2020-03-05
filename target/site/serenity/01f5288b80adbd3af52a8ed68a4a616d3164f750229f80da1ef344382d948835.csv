@@ -1,2 +1,7 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Filter","Test filter price","SUCCESS","2020-03-04T14:55:43.115-05:00[America/Bogota]","0.0","80.35"
+"Filter","Test filter price","SUCCESS","2020-03-05T11:55:55.24-05:00[America/Bogota]","0.0","22.39"
+"Login","Test succesful login","SUCCESS","2020-03-05T11:56:17.644-05:00[America/Bogota]","0.0","15.02"
+"Login","Test unsuccesful login password","SUCCESS","2020-03-05T11:56:32.667-05:00[America/Bogota]","0.0","19.56"
+"Login","Test unsuccesful login email","SUCCESS","2020-03-05T11:56:52.231-05:00[America/Bogota]","0.0","17.0"
+"Logout","Test successful log out","SUCCESS","2020-03-05T11:57:09.232-05:00[America/Bogota]","0.0","22.88"
+"Register","Test invalid register without cellphone","SUCCESS","2020-03-05T11:57:32.118-05:00[America/Bogota]","0.0","21.24"

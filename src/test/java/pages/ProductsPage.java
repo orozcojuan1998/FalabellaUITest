@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class ProductsPage extends BasePage {
 
     @FindBy(id = "testId-Accordion-Precio")
@@ -25,7 +27,6 @@ public class ProductsPage extends BasePage {
     @FindBy(xpath = "//button[@class = 'jsx-3084763500']")
     private WebElement buttonForFilter;
 
-    // //div[@class='jsx-1395131234 search-results-4-grid'][3]
 
 
     public ProductsPage(WebDriver driver) {
@@ -34,8 +35,9 @@ public class ProductsPage extends BasePage {
     }
 
     public void setPriceFilter(String from, String to) {
+        By filterPriceButton = By.id("testId-Accordion-Precio");
         WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("8"));
-        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("testId-Accordion-Precio")));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(filterPriceButton));
         click(buttonPrice);
         click(rangeFrom);
         clear(rangeFrom);
@@ -48,37 +50,34 @@ public class ProductsPage extends BasePage {
     }
 
     public Boolean getResults(String from, String to) {
-        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("4"));
-        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("testId-searchResults-products")));
-        List<WebElement> results = driver.findElements(By.xpath("//div[@class='jsx-1395131234 search-results-4-grid']"));
+        List<WebElement> results = new ArrayList<>();
+        By resultSearch = By.id("testId-searchResults-products");
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(resultSearch));
         List<Integer> prices = new ArrayList<>();
-        Boolean key = false;
-        int cont = 0;
-
+        boolean key = false;
+        int contFilterElements = 0;
+        By searchResults = By.xpath("//div[@class='jsx-1395131234 search-results-4-grid']");
+        results = driver.findElements(searchResults);
         for (WebElement element : results) {
             String price = (element.getText().substring(element.getText().indexOf('$') + 2, element.getText().indexOf('$') + 9));
             int indexOfDecimal = price.indexOf(".");
-            String partOne = price.substring(0, indexOfDecimal);
-            String partTwo = price.substring(indexOfDecimal + 1);
-            partOne = partOne.concat(partTwo);
-            System.out.println(partOne);
-            prices.add(Integer.valueOf(partOne));
+            String integerPart = price.substring(0, indexOfDecimal);
+            String IntegerPartTwo = price.substring(indexOfDecimal + 1);
+            integerPart = integerPart.concat(IntegerPartTwo);
+            prices.add(Integer.valueOf(integerPart));
         }
 
         for (Integer price : prices) {
-            if (price <= Integer.valueOf(to)) {
-                cont ++;
-            }
-            else {
+            if (price <= Integer.parseInt(to)) {
+                contFilterElements++;
+            } else {
                 return false;
             }
         }
-        if (cont == prices.size()){
+        if (contFilterElements == prices.size()) {
             key = true;
         }
-
         return key;
     }
-
-
 }

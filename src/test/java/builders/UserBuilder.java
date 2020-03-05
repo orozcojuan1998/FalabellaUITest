@@ -37,6 +37,15 @@ public class UserBuilder {
     }
 
 
+    public UserBuilder withGender(String gender) {
+
+        user.setGender(gender);
+
+        return this;
+
+    }
+
+
     public UserBuilder withName(String name) {
 
         user.setName(name);

@@ -67,13 +67,17 @@ public class RegisterPage extends BasePage{
     @FindBy(id = "mensajeCelVacio")
     private WebElement messageCellphone;
 
+    private By messageErrorCellphone = By.id("mensajeCelVacio");
+
+
+
     public RegisterPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }
 
     public void enterData(User user) {
-        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("7"));
+        WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("6"));
         waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("user")));
         click(name);
         clear(name);
@@ -100,7 +104,12 @@ public class RegisterPage extends BasePage{
         click(documentNumber);
         clear(documentNumber);
         writeText(documentNumber,String.valueOf(user.getNumDocument()));
-        click(genderFemale);
+        if(user.getGender().equals("M")){
+            click(genderMale);
+        }
+        else if (user.getGender().equals("F")){
+            click(genderFemale);
+        }
         Select dropDay = new Select(day);
         dropDay.selectByValue(String.valueOf(user.getDay()));
         Select dropMonth = new Select(month);
@@ -110,8 +119,6 @@ public class RegisterPage extends BasePage{
         if(!checkTerms.isSelected()){
             checkTerms.sendKeys(Keys.SPACE);
         }
-
-
     }
 
     public WebElement getButtonRegister() {
@@ -120,11 +127,9 @@ public class RegisterPage extends BasePage{
 
     public String getRegisterMessageError() {
         WebDriverWait waitItems = new WebDriverWait(driver,Long.parseLong("7"));
-        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("mensajeCelVacio")));
-        String message = messageCellphone.getText();
-        return message;
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(messageErrorCellphone));
+        return messageCellphone.getText();
     }
 
-    //https://stackoverflow.com/questions/20138761/how-to-select-a-dropdown-value-in-selenium-webdriver-using-java
 
 }
