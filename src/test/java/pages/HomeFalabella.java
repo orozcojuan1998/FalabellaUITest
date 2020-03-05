@@ -126,10 +126,10 @@ public class HomeFalabella extends BasePage {
     }
 
     public ProductsPage searchProduct(String query) {
-        WebDriverWait waitItemAlert = new WebDriverWait(driver, Long.parseLong("8"));
+       /* WebDriverWait waitItemAlert = new WebDriverWait(driver, Long.parseLong("8"));
         waitItemAlert.until(ExpectedConditions.visibilityOfElementLocated(alertMessage));
         WebElement alert = driver.findElement(alertMessage);
-        click(alert);
+        click(alert);*/
         WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("5"));
         waitItems.until(ExpectedConditions.visibilityOfElementLocated(searchBarQuery));
         click(searchBar);

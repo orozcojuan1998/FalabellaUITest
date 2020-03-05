@@ -29,6 +29,9 @@ public class ProductsPage extends BasePage {
 
 
 
+
+
+
     public ProductsPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -51,13 +54,14 @@ public class ProductsPage extends BasePage {
 
     public Boolean getResults(String from, String to) {
         List<WebElement> results = new ArrayList<>();
-        By resultSearch = By.id("testId-searchResults-products");
-        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("5"));
-        waitItems.until(ExpectedConditions.visibilityOfElementLocated(resultSearch));
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("7"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(By.id("testId-searchResults-products")));
         List<Integer> prices = new ArrayList<>();
         boolean key = false;
         int contFilterElements = 0;
+        WebDriverWait waitItemsSearch = new WebDriverWait(driver, Long.parseLong("7"));
         By searchResults = By.xpath("//div[@class='jsx-1395131234 search-results-4-grid']");
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(searchResults));
         results = driver.findElements(searchResults);
         for (WebElement element : results) {
             String price = (element.getText().substring(element.getText().indexOf('$') + 2, element.getText().indexOf('$') + 9));
@@ -79,5 +83,16 @@ public class ProductsPage extends BasePage {
             key = true;
         }
         return key;
+    }
+
+    public ProductDetailPage getProduct() {
+        List<WebElement> results = new ArrayList<>();
+        By resultSearch = By.id("testId-searchResults-products");
+        WebDriverWait waitItems = new WebDriverWait(driver, Long.parseLong("5"));
+        waitItems.until(ExpectedConditions.visibilityOfElementLocated(resultSearch));
+        By searchResults = By.xpath("//div[@class='jsx-1395131234 search-results-4-grid']");
+        results = driver.findElements(searchResults);
+        click(results.get(4));
+        return new ProductDetailPage(driver);
     }
 }

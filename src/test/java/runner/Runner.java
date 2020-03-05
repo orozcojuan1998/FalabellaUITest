@@ -5,6 +5,6 @@ import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/shopping/cart.feature",
+        features = "src/test/resources/features/",
         glue = {"steps","webdrivermanager"}, strict = true)
 public class Runner {}
